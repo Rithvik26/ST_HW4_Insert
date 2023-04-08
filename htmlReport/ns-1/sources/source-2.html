@@ -1,0 +1,179 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SLL</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">sll</a>
+</div>
+
+<h1>Coverage Summary for Class: SLL (sll)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SLL</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (4/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    42.9%
+  </span>
+  <span class="absValue">
+    (21/49)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package sll;
+&nbsp;public class SLL {
+&nbsp;    Node head; int size;
+<b class="fc">&nbsp;    public SLL() {}</b>
+<b class="nc">&nbsp;    public SLL(Node head) { this.head = head; }</b>
+&nbsp;    /** insert n1 before n2 */
+&nbsp;    public void insert(Node n1, Node n2)
+&nbsp;            throws NullPointerException {
+<b class="fc">&nbsp;        if (n1 == null) {</b>
+<b class="fc">&nbsp;            throw new NullPointerException(&quot;n1 is null&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if (head == null) {</b>
+<b class="fc">&nbsp;            head = n1; size++; return;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if (n2 == null) {</b>
+<b class="fc">&nbsp;            throw new NullPointerException(&quot;n2 is null&quot;);</b>
+&nbsp;        }
+<b class="fc">&nbsp;        if (n2 == head) {</b>
+<b class="fc">&nbsp;            n1.setNext(n2);</b>
+<b class="fc">&nbsp;            head = n1; size++;</b>
+&nbsp;            return;
+&nbsp;        }
+<b class="fc">&nbsp;        Node n = new Node();</b>
+<b class="fc">&nbsp;        n.data = n2.getData();</b>
+<b class="fc">&nbsp;        n.next = n2.getNext();</b>
+<b class="fc">&nbsp;        n2.setData(n1.getData());</b>
+<b class="fc">&nbsp;        n2.setNext(n); size++;</b>
+&nbsp;    }
+&nbsp;    public Node find(String attr, String value) {
+<b class="nc">&nbsp;        Node p=head;</b>
+<b class="nc">&nbsp;        while (p!=null) {</b>
+<b class="nc">&nbsp;            if (p.data.compareTo(value)==0) return p;</b>
+<b class="nc">&nbsp;            p=p.next;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;    public boolean remove(Node n) {
+<b class="nc">&nbsp;        if (n==null)</b>
+<b class="nc">&nbsp;            throw new NullPointerException</b>
+&nbsp;                    (&quot;Node to remove is null.&quot;);
+<b class="nc">&nbsp;        if (head==null)</b>
+<b class="nc">&nbsp;            throw new NullPointerException</b>
+&nbsp;                    (&quot;Linked list is empty&quot;);
+<b class="nc">&nbsp;        if (head==n) {</b>
+<b class="nc">&nbsp;            if (head.getNext()==null) {</b>
+<b class="nc">&nbsp;                head=null;</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                head.setData(head.getNext().getData());</b>
+<b class="nc">&nbsp;                head.setNext(head.getNext().getNext());</b>
+&nbsp;            }
+<b class="nc">&nbsp;            size--;</b>
+<b class="nc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (n.getNext()==null) {</b>
+<b class="nc">&nbsp;            Node p=head;</b>
+<b class="nc">&nbsp;            while (p.getNext()!=n)</b>
+<b class="nc">&nbsp;                p=p.getNext();</b>
+<b class="nc">&nbsp;            p.setNext(null); size--;</b>
+<b class="nc">&nbsp;            return true;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        n.setData(n.getNext().getData());</b>
+<b class="nc">&nbsp;        n.setNext(n.getNext().getNext());</b>
+<b class="nc">&nbsp;        size--;</b>
+<b class="nc">&nbsp;        return true;</b>
+&nbsp;    }
+<b class="fc">&nbsp;    public int size() { return size; }</b>
+&nbsp;    public String toString() {
+<b class="fc">&nbsp;        Node p = head; String r = &quot;&quot;;</b>
+<b class="fc">&nbsp;        while (p != null) {</b>
+<b class="fc">&nbsp;            r += p.getData() + &quot; &quot;;</b>
+<b class="fc">&nbsp;            p = p.next;</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return r;</b>
+&nbsp;    }
+<b class="nc">&nbsp;    public Node head() { return head; }</b>
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-04-08 00:44</div>
+</div>
+</body>
+</html>
